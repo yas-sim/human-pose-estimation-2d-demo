@@ -31,9 +31,9 @@ Please see more information about `Model downloader` [here](../../../tools/downl
 
 
 ### 0. Prerequisites
-- OpenVINO 2020.2
-  - If you haven't installed it, go to the OpenVINO web page and follow the [*Get Started*](https://software.intel.com/en-us/openvino-toolkit/documentation/get-started) guide to do it.)  
-- Microsoft Visual Studio 2019
+- **OpenVINO 2020.2**
+  - If you haven't installed it, go to the OpenVINO web page and follow the [*Get Started*](https://software.intel.com/en-us/openvino-toolkit/documentation/get-started) guide to do it.  
+- **Microsoft Visual Studio 2019**
   - Community version works. MS VS 2017/2015 may also work. You need to modify the `build-poseextractor.bat` accordingly.
   - This is requied to build the `pose_extractor` module.
 
