@@ -29,8 +29,13 @@ Please see more information about `Model downloader` [here](../../../tools/downl
 
 ## How to Run
 
-(Assuming you have successfully installed and setup OpenVINO 2020.2. If you haven't, go to the OpenVINO web page and follow the [*Get Started*](https://software.intel.com/en-us/openvino-toolkit/documentation/get-started) guide to do it.)  
 
+### 0. Prerequisites
+- OpenVINO 2020.2
+  - If you haven't installed it, go to the OpenVINO web page and follow the [*Get Started*](https://software.intel.com/en-us/openvino-toolkit/documentation/get-started) guide to do it.)  
+- Microsoft Visual Studio 2019
+  - Community version works. MS VS 2017/2015 may also work. You need to modify the `build-poseextractor.bat` accordingly.
+  - This is requied to build the `pose_extractor` module.
 
 ### 1. Install dependencies  
 The demo depends on:
@@ -57,11 +62,12 @@ The `build-poseextractor.[sh|bat]` will copy the `pose_extractor` C++ code from 
 
 ``` sh
 (Linux) 
- chmod +x build-poseextractor.sh
- ./build-poseextractor.sh
+ $ chmod +x build-poseextractor.sh
+ $ ./build-poseextractor.sh
 
 (Win10)
- build-poseextractor.bat
+ * Open 'Developer Command Prompt for VS 2019' instead of the 'cmd.exe'. Or the build process will fail because the PATH is not properly set for `msbuild` command.
+ > build-poseextractor.bat
 ```
 
 ### 4. Run the demo app

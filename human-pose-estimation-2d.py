@@ -1,7 +1,8 @@
+import sys
+
 import numpy as np
 import cv2
 from openvino.inference_engine import IENetwork, IECore
-
 
 # C++ module for extracting pose from PAFs and heatmaps
 from pose_extractor import extract_poses
@@ -26,7 +27,7 @@ def renderPeople(img, people, scaleFactor=4, threshold=0.5):
     scalex = img.shape[1]/(57 * scaleFactor)
     scaley = img.shape[0]/(32 * scaleFactor)
     for person in people:
-        for i, limbId in enumerate(limbIds[:-1]):
+        for i, limbId in enumerate(limbIds[:-2]):
             x1, y1, conf1 = person[limbId[0]*3:limbId[0]*3+2 +1]
             x2, y2, conf2 = person[limbId[1]*3:limbId[1]*3+2 +1]
             if conf1>threshold and conf2>threshold:
@@ -58,7 +59,7 @@ def main():
 
         ret, img = cam.read()
         if ret==False:
-            return
+            return 0
 
         inblob = cv2.resize(img, (input_shape_hp[3], input_shape_hp[2]))    # 3=Width, 2=Height
         inblob = inblob.transpose((2, 0, 1))                                # Change data layout from HWC to CHW
@@ -70,10 +71,12 @@ def main():
         PAFs     = res_hp[PAF_blobName][0]
         people = extract_poses(heatmaps[:-1], PAFs, 4)                      # Construct poses from HMs and PAFs
 
-        renderPeople(img, people, 4, 0.5)
+        renderPeople(img, people, 4, 0.2)
         cv2.imshow('Result', img)
 
     cv2.destroyAllWindows()
+    return 0
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
+
