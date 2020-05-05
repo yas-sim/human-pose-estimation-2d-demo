@@ -9,7 +9,7 @@ This project contains a small script file to copy and build the `pose_extractor`
 このプログラムはOpenVINO [Open Model Zoo](https://docs.openvinotoolkit.org/latest/_models_intel_index.html)の [`human-pose-estimation-0001`](https://docs.openvinotoolkit.org/latest/_models_intel_human_pose_estimation_0001_description_human_pose_estimation_0001.html)モデルの使い方のデモプログラムです。プログラムは入力画像から人の姿勢(一人あたり18の座標点)を抽出します。  
 DLモデル自身は入力画像を推論し、[heatmaps (HMs)とpair affinity fields (PAFs)](https://arvrjourney.com/human-pose-estimation-using-openpose-with-tensorflow-part-2-e78ab9104fc8)を出力します。HMsとPAFsは一種の画像で57x32の解像度を持ち、HMsは18枚、PAFsは18x2枚の画像からなります。ユーザープログラムは後処理としてPAFsとHMsの画像解析を行い、人の姿勢(各点の座標)を再構築するアルゴリズムを記述する必要があります。  
 この処理をPythonで記述することも可能ですが、重い処理であり、プログラム全体のボトルネックとなります。
-幸いなことにインテルがこの後処理を行うC++で記述された`pose_extractor` Pythonモジュールを提供していますのでこれを利用することが可能です。このモジュールは3D-human-pose-estimationデモ用の物ですが基本の処理は同じですのでこれを2Dモデルに再利用することが可能です。
+幸いなことにインテルがこの後処理を行うC++で記述された`pose_extractor` Pythonモジュールを提供していますのでこれを利用することが可能です。このモジュールは3D-human-pose-estimationデモ用の物ですが基本の処理は同じですのでこれを2Dモデルに再利用することが可能です。  
 このプロジェクトは`pose_extractor`後処理モジュールをビルドするための小さなスクリプトと、このモジュールを利用する方法を示すためのPythonコードからなります。
 
 
