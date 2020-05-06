@@ -76,8 +76,8 @@ Attach a USB webCam as input of the demo program, then run the program. If you w
 Also, you can change inference devide by modifying `ie.load_network(net_hp, 'CPU')` in the code. You can use `CPU`, `GPU`, `MYRIAD`, `HDDL`, `HETERO:FPGA,CPU`, `MULTI:CPU,GPU`, and so on. Please refer to the [OpenVINO document web site](https://docs.openvinotoolkit.org/latest/_docs_IE_DG_supported_plugins_Supported_Devices.html) for details.
 
 ``` sh
-(Linux) python3 objdet-adaptive-partitioning.py
-(Win10) python objdet-adaptive-partitioning.py
+(Linux) python3 human-pose-estimation-2d.py
+(Win10) python human-pose-estimation-2d.py
 ```
 
 ## Demo Output  
