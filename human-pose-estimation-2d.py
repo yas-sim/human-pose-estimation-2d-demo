@@ -40,12 +40,12 @@ def main():
     ie = IECore()
     model_hp = 'intel/human-pose-estimation-0001/FP16/human-pose-estimation-0001'
     net_hp  = ie.read_network(model=model_hp+'.xml', weights=model_hp+'.bin')
-    input_name_hp   = next(iter(net_hp.inputs))             # Input blob name "data"
-    input_shape_hp  = net_hp.inputs[input_name_hp].shape    # [1,3,256,456]
-    PAF_blobName    = list(net_hp.outputs.keys())[0]        # 'Mconv7_stage2_L1'
-    HM_blobName     = list(net_hp.outputs.keys())[1]        # 'Mconv7_stage2_L2'
-    PAF_shape       = net_hp.outputs[PAF_blobName].shape    #  [1,38,32,57] 
-    HM_shape        = net_hp.outputs[HM_blobName].shape     #  [1,19,32,57]
+    input_name_hp   = next(iter(net_hp.input_info))                     # Input blob name "data"
+    input_shape_hp  = net_hp.input_info[input_name_hp].tensor_desc.dims # [1,3,256,456]
+    PAF_blobName    = list(net_hp.outputs.keys())[0]                    # 'Mconv7_stage2_L1'
+    HM_blobName     = list(net_hp.outputs.keys())[1]                    # 'Mconv7_stage2_L2'
+    PAF_shape       = net_hp.outputs[PAF_blobName].shape                #  [1,38,32,57] 
+    HM_shape        = net_hp.outputs[HM_blobName].shape                 #  [1,19,32,57]
     exec_net_hp     = ie.load_network(net_hp, 'CPU')
 
     # Open a USB webcam
