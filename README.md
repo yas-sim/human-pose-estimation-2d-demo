@@ -12,6 +12,7 @@ DLモデル自身は入力画像を推論し、[heatmaps (HMs)とpair affinity f
 幸いなことにインテルがこの後処理を行うC++で記述された`pose_extractor` Pythonモジュールを提供していますのでこれを利用することが可能です。このモジュールは3D-human-pose-estimationデモ用の物ですが基本の処理は同じですのでこれを2Dモデルに再利用することが可能です。  
 このプロジェクトは`pose_extractor`後処理モジュールをビルドするための小さなスクリプトと、このモジュールを利用する方法を示すためのPythonコードからなります。
 
+[NEW 09-APR-2022] OpenVINO 2022.1 Support (API 2.0 support)
 
 ### Human Pose Estimation Result
 ![human-pose](./resources/human-pose.gif)
